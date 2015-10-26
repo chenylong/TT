@@ -1,0 +1,41 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+   "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+ <sqlMap>
+   
+    <select id="selectWorkcard"  parameterClass = "java.util.HashMap" resultClass="java.util.HashMap">   
+     <![CDATA[
+      select 
+      datenum,num1,num2,num3,num4,num5,num5,num6,blue_num,to_char(wdate,'yyyy-mm-dd') wdate from t_double_data
+       ]]>
+    </select>
+    
+      <select id="queryNumCountById"  parameterClass = "java.util.HashMap" resultClass="java.util.HashMap">   
+     <![CDATA[
+      select
+       $NUMID$::text as "label",count(1)::text as "value" 
+        from t_double_data     
+        group by $NUMID$
+        order by $NUMID$ asc
+        
+       ]]>
+    </select>
+      <select id="queryDomeSql"  parameterClass = "java.util.HashMap" resultClass="java.util.HashMap">   
+     <![CDATA[
+      $SQL$
+        
+       ]]>
+    </select>
+       <select id="queryPictureByID"  parameterClass = "java.util.HashMap" resultClass="java.util.HashMap">   
+     <![CDATA[
+      
+      select image_id,image_name,image_type,image_type,image_url from t_image_info_c t
+          order by insert_date desc
+          limit #LIMITINT# 
+        
+       ]]>
+    </select>
+      
+      
+    
+ </sqlMap>
